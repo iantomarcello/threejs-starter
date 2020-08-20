@@ -4,6 +4,7 @@
   "description": "Three.js starter project",
   "main": "index.js",
   "dependencies": {
+    "comlink": "^4.3.0",
     "three": "^0.119.1"
   },
   "devDependencies": {
@@ -43,8 +44,7 @@
         "always"
       ]
     }
-  }
-,
+  },
   "author": "Ian Yong (iantomarcello)",
   "license": "MIT"
 }

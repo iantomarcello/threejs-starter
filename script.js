@@ -1,18 +1,24 @@
+import * as Comlink from 'comlink';
+
 const canvas = document.getElementById('webgl-canvas');
 const offscreen = canvas.transferControlToOffscreen();
-const worker = new Worker('worker.js',{ type: 'module' });
-worker.postMessage({
-  id: 'init',
-	canvas: offscreen,
-	width: canvas.clientWidth,
-	height: canvas.clientHeight,
-	pixelRatio: window.devicePixelRatio,
-}, [ offscreen ]);
+const ThreeClass = Comlink.wrap(new Worker('worker.js', { type: 'module', }));
 
-window.addEventListener("resize", ev => {
-  worker.postMessage({
-    id: 'resize',
-  	width: canvas.clientWidth,
-  	height: canvas.clientHeight,
-  })
-});
+(async () => {
+  const Three = await new ThreeClass();
+  await Comlink.transfer(offscreen, [offscreen]);
+
+  await Three.init({
+    canvas: offscreen,
+    width: canvas.clientWidth,
+    height: canvas.clientHeight,
+    pixelRatio: window.devicePixelRatio,
+  }, offscreen);
+
+  window.addEventListener('resize', () => {
+    Three.resize({
+      width: canvas.clientWidth,
+      height: canvas.clientHeight,
+    });
+  });
+})();

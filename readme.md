@@ -6,5 +6,5 @@ Uses [es-dev-server](https://github.com/open-wc/open-wc/tree/master/packages/es-
 
 ## Branches
 - `master`, basic setup on the web.
-- `webworker`, setup using a Web Worker. *(Current active branch)*
-- `comlink`, setup using [Comlink](https://github.com/GoogleChromeLabs/comlink).
+- `webworker`, setup using a Web Worker.
+- `comlink`, setup using [Comlink](https://github.com/GoogleChromeLabs/comlink). *(Current active branch)*
