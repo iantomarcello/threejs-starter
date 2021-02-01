@@ -1,25 +1,25 @@
-import { Scene, PerspectiveCamera, WebGLRenderer, GridHelper, Mesh, BoxGeometry, MeshBasicMaterial } from 'three';
+import * as THREE from 'three';
 
 const canvas = document.getElementById('webgl-canvas');
 const width = canvas.clientWidth;
 const height = canvas.clientHeight;
 const pixelRatio = window.devicePixelRatio;
 
-const scene = new Scene();
+const scene = new THREE.Scene();
 
-const camera = new PerspectiveCamera(45, width / height, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
 camera.position.y = 30;
 
-const renderer = new WebGLRenderer({ antialias: true, canvas: canvas});
+const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
 renderer.setSize(width, height);
 renderer.setPixelRatio(pixelRatio);
 
-const gridHelper = new GridHelper(1000, 100);
+const gridHelper = new THREE.GridHelper(1000, 100);
 scene.add(gridHelper);
 
-const box = new Mesh(
-  new BoxGeometry(60, 60, 60),
-  new MeshBasicMaterial({ color: 0xf5f5f5, })
+const box = new THREE.Mesh(
+  new THREE.BoxGeometry(60, 60, 60),
+  new THREE.MeshBasicMaterial({ color: 0xf5f5f5, })
 );
 box.position.z = -300;
 box.position.y = 30;
