@@ -1,41 +1,41 @@
-import { Scene, PerspectiveCamera, WebGLRenderer, GridHelper, Mesh, BoxGeometry, MeshBasicMaterial } from 'three';
+import * as THREE from 'three';
 
 let canvas;
 let width;
 let height;
 let pixelRatio;
 
-let scene = new Scene();
+let scene = new THREE.Scene();
 let camera;
 let renderer;
 
 let gridHelper;
 let box;
 
-self.addEventListener("message", ev => {
+self.addEventListener('message', ev => {
   let data = ev.data;
 
   switch (data.id) {
-    case "init":
+    case 'init':
     default:
       canvas = data.canvas;
       width = data.width;
       height = data.height;
       pixelRatio = data.pixelRatio;
 
-      camera = new PerspectiveCamera(45, width / height, 0.1, 1000);
+      camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
       camera.position.y = 30;
 
-      renderer = new WebGLRenderer({ antialias: true, canvas: canvas});
+      renderer = new THREE.WebGLRenderer({ antialias: true, canvas: canvas});
       renderer.setSize(width, height, false);
       renderer.setPixelRatio(pixelRatio);
 
-      gridHelper = new GridHelper(1000, 100);
+      gridHelper = new THREE.GridHelper(1000, 100);
       scene.add(gridHelper);
 
-      box = new Mesh(
-        new BoxGeometry(60, 60, 60),
-        new MeshBasicMaterial({ color: 0xf5f5f5, })
+      box = new THREE.Mesh(
+        new THREE.BoxGeometry(60, 60, 60),
+        new THREE.MeshBasicMaterial({ color: 0xf5f5f5, })
       );
       box.position.z = -300;
       box.position.y = 30;
@@ -45,7 +45,7 @@ self.addEventListener("message", ev => {
 
       break;
 
-    case "resize":
+    case 'resize':
       width = data.width;
       height = data.height;
       camera.aspect = width / height;

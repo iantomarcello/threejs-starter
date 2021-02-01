@@ -9,7 +9,7 @@ worker.postMessage({
 	pixelRatio: window.devicePixelRatio,
 }, [ offscreen ]);
 
-window.addEventListener("resize", ev => {
+window.addEventListener('resize', ev => {
   worker.postMessage({
     id: 'resize',
   	width: canvas.clientWidth,
