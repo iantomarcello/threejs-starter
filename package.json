@@ -4,12 +4,12 @@
   "description": "Three.js starter project",
   "main": "index.js",
   "dependencies": {
-    "comlink": "^4.3.0",
-    "three": "^0.119.1"
+    "comlink": "^4.4.2",
+    "three": "^0.179.1"
   },
   "devDependencies": {
-    "es-dev-server": "^1.57.2",
-    "eslint": "^7.7.0"
+    "es-dev-server": "^2.1.0",
+    "eslint": "^9.32.0"
   },
   "scripts": {
     "start": "es-dev-server --node-resolve --watch --open --port 8088",
